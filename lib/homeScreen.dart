@@ -1,4 +1,5 @@
 import 'package:facebook/widgets/createPost.dart';
+import 'package:facebook/widgets/postcard.dart';
 import 'package:facebook/widgets/quickactions.dart';
 import 'package:facebook/widgets/stories.dart';
 import 'package:facebook/widgets/topBar.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
             CreatePost(),
             QuickActions(),
             Stories(),
+            Expanded(child: ListView(children: [PostCard()])),
           ],
         ),
       ),
