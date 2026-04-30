@@ -104,21 +104,34 @@ class PostDetail extends StatelessWidget {
                   ),
                 ),
 
-                comment(
-                  "Moa Rotenb",
-                  "12 min",
-                  "Enzo Ferrari was not initially interested in the idea of producing road cars when he formed Scuderia",
-                ),
-                comment(
-                  "Lucie Polis",
-                  "10 min",
-                  "Early in 1969, Fiat took a 50% stake in Ferrari. An immediate result was an increase in available investment funds.",
-                ),
-                comment(
-                  "Laura Leporc",
-                  "15 min",
-                  "On 15 September 2012, 964 Ferrari cars worth over...",
-                ),
+               Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    // Comentario principal
+    comment(
+      "Moa Rotenb",
+      "12 min",
+      "Enzo Ferrari was not initially interested in the idea of producing road cars when he formed Scuderia",
+    ),
+
+    // 👇 RESPUESTA (esto es lo que te faltaba)
+    Padding(
+      padding: const EdgeInsets.only(left: 40),
+      child: comment(
+        "Lucie Polis",
+        "10 min",
+        "Early in 1969, Fiat took a 50% stake in Ferrari. An immediate result was an increase in available investment funds.",
+      ),
+    ),
+
+    // Otro comentario normal
+    comment(
+      "Laura Leporc",
+      "15 min",
+      "On 15 September 2012, 964 Ferrari cars worth over...",
+    ),
+  ],
+),
               ],
             ),
           ),
