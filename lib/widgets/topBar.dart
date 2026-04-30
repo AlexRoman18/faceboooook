@@ -50,6 +50,7 @@ class TopBar extends StatelessWidget {
                 icon: Icons.group,
                 bgColor: Color(0xFF1877F2),
                 iconColor: Colors.white,
+                showBadge: true,
               ),
 
               const SizedBox(width: 10),
