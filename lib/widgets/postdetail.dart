@@ -39,7 +39,9 @@ class PostDetail extends StatelessWidget {
                   child: Row(
                     children: const [
                       CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/users/2.jpg"),
+                        backgroundImage: AssetImage(
+                          "assets/images/users/2.jpg",
+                        ),
                       ),
                       SizedBox(width: 10),
                       Expanded(
@@ -69,17 +71,35 @@ class PostDetail extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      SvgPicture.asset("assets/images/emojis/like.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/like.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 4),
-                      SvgPicture.asset("assets/images/emojis/heart.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/heart.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 4),
-                      SvgPicture.asset("assets/images/emojis/laughing.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/laughing.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 4),
-                      SvgPicture.asset("assets/images/emojis/shocked.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/shocked.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 4),
-                      SvgPicture.asset("assets/images/emojis/sad.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/sad.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 4),
-                      SvgPicture.asset("assets/images/emojis/angry.svg", height: 18),
+                      SvgPicture.asset(
+                        "assets/images/emojis/angry.svg",
+                        height: 18,
+                      ),
                       const SizedBox(width: 8),
                       const Text("2.6k", style: TextStyle(color: Colors.grey)),
                       const Spacer(),
@@ -104,34 +124,37 @@ class PostDetail extends StatelessWidget {
                   ),
                 ),
 
-               Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    // Comentario principal
-    comment(
-      "Moa Rotenb",
-      "12 min",
-      "Enzo Ferrari was not initially interested in the idea of producing road cars when he formed Scuderia",
-    ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Comentario principal
+                    comment(
+                      "Moa Rotenb",
+                      "12 min",
+                      "Enzo Ferrari was not initially interested in the idea of producing road cars when he formed Scuderia",
+                      "assets/images/users/4.jpg",
+                    ),
 
-    // 👇 RESPUESTA (esto es lo que te faltaba)
-    Padding(
-      padding: const EdgeInsets.only(left: 40),
-      child: comment(
-        "Lucie Polis",
-        "10 min",
-        "Early in 1969, Fiat took a 50% stake in Ferrari. An immediate result was an increase in available investment funds.",
-      ),
-    ),
+                    // 👇 RESPUESTA (esto es lo que te faltaba)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40),
+                      child: comment(
+                        "Lucie Polis",
+                        "10 min",
+                        "Early in 1969, Fiat took a 50% stake in Ferrari. An immediate result was an increase in available investment funds.",
+                        "assets/images/users/5.jpg",
+                      ),
+                    ),
 
-    // Otro comentario normal
-    comment(
-      "Laura Leporc",
-      "15 min",
-      "On 15 September 2012, 964 Ferrari cars worth over...",
-    ),
-  ],
-),
+                    // Otro comentario normal
+                    comment(
+                      "Laura Leporc",
+                      "15 min",
+                      "On 15 September 2012, 964 Ferrari cars worth over...",
+                      "assets/images/users/6.jpg",
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -161,16 +184,13 @@ class PostDetail extends StatelessWidget {
     );
   }
 
-  Widget comment(String name, String time, String text) {
+  Widget comment(String name, String time, String text, String avatarPath) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            radius: 16,
-            backgroundImage: AssetImage("assets/images/users/3.jpg"),
-          ),
+          CircleAvatar(radius: 16, backgroundImage: AssetImage(avatarPath)),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
