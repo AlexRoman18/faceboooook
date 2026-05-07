@@ -1,157 +1,78 @@
+import 'package:facebook/widgets/comments/comment_input.dart';
+import 'package:facebook/widgets/comments/comment_item.dart';
+import 'package:facebook/widgets/comments/comments_title.dart';
+import 'package:facebook/widgets/posts/post_app_bar.dart';
+import 'package:facebook/widgets/posts/post_caption.dart';
+import 'package:facebook/widgets/posts/post_header.dart';
+import 'package:facebook/widgets/posts/post_image.dart';
+import 'package:facebook/widgets/posts/post_reactions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:facebook/models/post_model.dart';
+
 
 class PostDetail extends StatelessWidget {
-  const PostDetail({super.key});
+  final PostModel post;
+
+  const PostDetail({
+    super.key,
+    required this.post,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0F2F5),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 10),
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: Color(0xFFE4E6EB),
-              child: Icon(Icons.share, color: Colors.black, size: 18),
-            ),
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
+
+      appBar: const PostAppBar(),
+
       body: Column(
         children: [
           Expanded(
             child: ListView(
               children: [
-                Container(
-                  color: Colors.white,
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    children: const [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                          "assets/images/users/2.jpg",
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          "Mathilda Rebus",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Text("8 min", style: TextStyle(color: Colors.grey)),
-                    ],
-                  ),
-                ),
+                PostHeader(post: post),
 
-                Image.asset("assets/images/publications/ferrari.jpeg"),
+                PostImage(image: post.postImage),
 
-                const Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Text(
-                    "Light of a Ferrari 458 in the streets of London. Look at this is amazing",
-                  ),
-                ),
+                PostCaption(caption: post.caption),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/images/emojis/like.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      SvgPicture.asset(
-                        "assets/images/emojis/heart.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      SvgPicture.asset(
-                        "assets/images/emojis/laughing.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      SvgPicture.asset(
-                        "assets/images/emojis/shocked.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      SvgPicture.asset(
-                        "assets/images/emojis/sad.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      SvgPicture.asset(
-                        "assets/images/emojis/angry.svg",
-                        height: 18,
-                      ),
-                      const SizedBox(width: 8),
-                      const Text("2.6k", style: TextStyle(color: Colors.grey)),
-                      const Spacer(),
-                      const Text(
-                        "2.6k Comments",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
+                PostReactions(post: post),
 
                 const Divider(),
 
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  child: Text(
-                    "Comments",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
+                const CommentsTitle(),
 
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Comentario principal
-                    comment(
-                      "Moa Rotenb",
-                      "12 min",
-                      "Enzo Ferrari was not initially interested in the idea of producing road cars when he formed Scuderia",
-                      "assets/images/users/4.jpg",
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
+
+                  children: const [
+                    CommentItem(
+                      name: "Moa Rotenb",
+                      time: "12 min",
+                      text: "Amazing picture!",
+                      avatarPath:
+                          "https://i.pravatar.cc/150?img=11",
                     ),
 
-                    // 👇 RESPUESTA (esto es lo que te faltaba)
                     Padding(
-                      padding: const EdgeInsets.only(left: 40),
-                      child: comment(
-                        "Lucie Polis",
-                        "10 min",
-                        "Early in 1969, Fiat took a 50% stake in Ferrari. An immediate result was an increase in available investment funds.",
-                        "assets/images/users/5.jpg",
+                      padding: EdgeInsets.only(left: 40),
+                      child: CommentItem(
+                        name: "Lucie Polis",
+                        time: "10 min",
+                        text:
+                            "This looks incredible 🔥",
+                        avatarPath:
+                            "https://i.pravatar.cc/150?img=25",
                       ),
                     ),
 
-                    // Otro comentario normal
-                    comment(
-                      "Laura Leporc",
-                      "15 min",
-                      "On 15 September 2012, 964 Ferrari cars worth over...",
-                      "assets/images/users/6.jpg",
+                    CommentItem(
+                      name: "Laura Leporc",
+                      time: "15 min",
+                      text: "Beautiful post!",
+                      avatarPath:
+                          "https://i.pravatar.cc/150?img=33",
                     ),
                   ],
                 ),
@@ -159,69 +80,7 @@ class PostDetail extends StatelessWidget {
             ),
           ),
 
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            color: Colors.white,
-            child: Row(
-              children: const [
-                CircleAvatar(
-                  radius: 16,
-                  backgroundImage: AssetImage("assets/images/users/1.jpg"),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    "Post a comment...",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-                Icon(Icons.emoji_emotions_outlined, color: Colors.grey),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget comment(String name, String time, String text, String avatarPath) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(radius: 16, backgroundImage: AssetImage(avatarPath)),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      time,
-                      style: const TextStyle(color: Colors.grey, fontSize: 12),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 2),
-                Text(text, style: const TextStyle(fontSize: 13)),
-                const SizedBox(height: 4),
-                const Text(
-                  "Like   Reply",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
-                ),
-              ],
-            ),
-          ),
+          const CommentInput(),
         ],
       ),
     );

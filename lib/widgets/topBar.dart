@@ -8,7 +8,8 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Colors.white,
       padding: const EdgeInsets.all(13),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

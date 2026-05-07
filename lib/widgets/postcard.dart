@@ -1,9 +1,16 @@
+import 'package:facebook/models/post_model.dart';
 import 'package:facebook/widgets/postdetail.dart';
 import 'package:facebook/widgets/reactionrow.dart';
+
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({super.key});
+  final PostModel post;
+
+  const PostCard({
+    super.key,
+    required this.post,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +18,9 @@ class PostCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => const PostDetail()),
+          MaterialPageRoute(
+            builder: (_) => PostDetail(post: post),
+          ),
         );
       },
       child: Container(
@@ -20,21 +29,30 @@ class PostCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ListTile(
+            ListTile(
               leading: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/users/2.jpg"),
+                backgroundImage: NetworkImage(post.userImage),
               ),
-              title: Text("Mathilda Rebus"),
-              subtitle: Text("8 min"),
+              title: Text(post.userName),
+              subtitle: Text(post.time),
             ),
-            Image.asset("assets/images/publications/ferrari.jpeg"),
-            const Padding(
-              padding: EdgeInsets.all(12),
-              child: Text(
-                "Light of a Ferrari 458 in the streets of London. Look at this is amazing",
-              ),
+
+            Image.network(
+              post.postImage,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
-            const ReactionRow(),
+
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Text(post.caption),
+            ),
+
+            ReactionRow(
+              likes: post.likes,
+              comments: post.comments,
+              shares: post.shares,
+            ),
           ],
         ),
       ),
