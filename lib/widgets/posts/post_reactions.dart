@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';        // Librería para renderizar imágenes SVG
 import 'package:facebook/models/post_model.dart';
 
 class PostReactions extends StatelessWidget {
-  final PostModel post;
+  final PostModel post; // Recibe el post
 
   const PostReactions({
     super.key,
@@ -15,7 +15,7 @@ class PostReactions extends StatelessWidget {
       padding: const EdgeInsets.only(right: 4),
       child: SvgPicture.asset(
         asset,
-        height: 18,
+        height: 18, // Todos los emojis tienen el mismo tamaño
       ),
     );
   }
@@ -38,7 +38,6 @@ class PostReactions extends StatelessWidget {
           reaction("assets/images/emojis/angry.svg"),
 
           const SizedBox(width: 8),
-
           Text(
             "${post.likes}",
             style: const TextStyle(

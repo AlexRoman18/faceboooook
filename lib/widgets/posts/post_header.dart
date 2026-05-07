@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:facebook/models/post_model.dart';
 
+// Widget que muestra la cabecera de un post: foto de perfil, nombre del usuario y tiempo de publicación
 class PostHeader extends StatelessWidget {
   final PostModel post;
 
@@ -18,11 +19,12 @@ class PostHeader extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(post.userImage),
+            backgroundImage: NetworkImage(post.userImage), // Carga desde internet
           ),
 
           const SizedBox(width: 10),
 
+          // Expanded evita overflow si el nombre es muy largo
           Expanded(
             child: Text(
               post.userName,

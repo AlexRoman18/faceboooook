@@ -18,7 +18,7 @@ class CommentInput extends StatelessWidget {
           CircleAvatar(
             radius: 16,
             backgroundImage: NetworkImage(
-              "https://i.pravatar.cc/150?img=50",
+              "https://i.pravatar.cc/150?img=50", // Avatar desde internet
             ),
           ),
 
