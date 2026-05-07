@@ -15,14 +15,14 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => PostDetail(post: post),
-          ),
-        );
-      },
+      // onTap: () {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (_) => PostDetail(post: post),
+      //     ),
+      //   );
+      // },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
         color: Colors.white,
