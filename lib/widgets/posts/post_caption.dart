@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class PostCaption extends StatelessWidget {
   final String caption;
 

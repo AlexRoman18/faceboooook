@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-class PostAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
+class PostAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PostAppBar({super.key});
 
   @override
@@ -10,16 +8,18 @@ class PostAppBar extends StatelessWidget
       backgroundColor: Colors.white,
       elevation: 0,
 
+      // Botón regresar a la pantalla anterior
       leading: IconButton(
         icon: const Icon(
           Icons.arrow_back,
           color: Colors.black,
         ),
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.pop(context); // Regresa a la pantalla anterior al presionar
         },
       ),
 
+      // Botones del lado derecho de la AppBar
       actions: const [
         Padding(
           padding: EdgeInsets.only(right: 10),
