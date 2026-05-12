@@ -9,15 +9,11 @@ import 'package:flutter/material.dart';
 
 // StatelessWidget porque no maneja estado propio
 class HomeScreen extends StatelessWidget {
-
   HomeScreen({super.key});
 
   // Genera una lista de 2 posts falsos usando la función generateFakePost()
   // El "_" indica que el índice del loop no se usa
-  final posts = List.generate(
-    10,
-    (_) => generateFakePost(),
-  );
+  final posts = List.generate(10, (_) => generateFakePost());
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +29,8 @@ class HomeScreen extends StatelessWidget {
             const QuickActions(),
             const Stories(),
 
-
             // Convierte cada post de la lista en un widget
-            ...posts.map(
-              (post) => PostCard(post: post),
-            ),
+            ...posts.map((post) => PostCard(post: post)),
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:facebook/widgets/posts/post_header.dart';
 import 'package:facebook/widgets/posts/post_image.dart';
 import 'package:facebook/widgets/posts/post_reactions.dart';
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
 import 'package:facebook/models/post_model.dart';
 
 
@@ -20,6 +21,8 @@ class PostDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final faker = Faker();
+
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -46,35 +49,20 @@ class PostDetail extends StatelessWidget {
                   crossAxisAlignment:
                       CrossAxisAlignment.start,
 
-                  children: const [
-                    CommentItem(
-                      name: "Moa Rotenb",
-                      time: "12 min",
-                      text: "Amazing picture!",
-                      avatarPath:
-                          "https://i.pravatar.cc/150?img=11",
-                    ),
+                  children: List.generate(3, (index) {
+                    final name = faker.person.name();
+                    final time = "${faker.randomGenerator.integer(20, min: 1)} min";
+                    final text = faker.lorem.sentence();
+                    final avatarPath =
+                        "https://i.pravatar.cc/150?img=${faker.randomGenerator.integer(70, min: 1)}";
 
-                    Padding(
-                      padding: EdgeInsets.only(left: 40),
-                      child: CommentItem(
-                        name: "Lucie Polis",
-                        time: "10 min",
-                        text:
-                            "This looks incredible 🔥",
-                        avatarPath:
-                            "https://i.pravatar.cc/150?img=25",
-                      ),
-                    ),
-
-                    CommentItem(
-                      name: "Laura Leporc",
-                      time: "15 min",
-                      text: "Beautiful post!",
-                      avatarPath:
-                          "https://i.pravatar.cc/150?img=33",
-                    ),
-                  ],
+                    return CommentItem(
+                      name: name,
+                      time: time,
+                      text: text,
+                      avatarPath: avatarPath,
+                    );
+                  }),
                 ),
               ],
             ),
