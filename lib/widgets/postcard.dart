@@ -1,5 +1,6 @@
 import 'package:facebook/models/post_model.dart';
 import 'package:facebook/widgets/postdetail.dart';
+//import 'package:facebook/widgets/postdetail.dart';
 import 'package:facebook/widgets/reactionrow.dart';
 
 import 'package:flutter/material.dart';
@@ -15,14 +16,14 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (_) => PostDetail(post: post),
-      //     ),
-      //   );
-      // },
+      onTap: () {
+        Navigator.push(
+         context,
+         MaterialPageRoute(
+          builder: (_) => PostDetail(post: post),
+        ),
+        );
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
         color: Colors.white,

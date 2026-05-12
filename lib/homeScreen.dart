@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   // Genera una lista de 2 posts falsos usando la función generateFakePost()
   // El "_" indica que el índice del loop no se usa
   final posts = List.generate(
-    2,
+    10,
     (_) => generateFakePost(),
   );
 
