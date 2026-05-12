@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+// Widget que representa un comentario individual en una publicación
 class CommentItem extends StatelessWidget {
+  // Datos del comentario que se reciben como parámetros obligatorios
   final String name;
   final String time;
   final String text;
@@ -62,6 +63,7 @@ class CommentItem extends StatelessWidget {
 
                 const SizedBox(height: 2),
 
+                // Contenido del comentario
                 Text(
                   text,
                   style: const TextStyle(fontSize: 13),

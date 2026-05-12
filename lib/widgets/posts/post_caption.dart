@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+//muestra el texto/descripción de un post
 class PostCaption extends StatelessWidget {
   final String caption;
 
